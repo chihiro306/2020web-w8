@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps example</title>
+    <style>
+      #map_canvas {
+        width: 600px;
+        height: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My map</h1>
+
+    <div id="map_canvas"></div>
+    <script>
+    function initMap() {
+      var myOptions = {
+        zoom: 14,
+        center: {lat: 35.72898097702353, lng: 139.46534513594736},
+        mapTypeId: google.maps.MapTypeId.TERRAIN,
+        disableDefaultUI: true,
+        // Step 4. Customize displayed controls
+        zoomControl: true,
+        mapTypeControl: true,
+        scaleControl: true
+      }
+      var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+      // Step 2. Add custom icon
+
+
+      var marker1 = new google.maps.Marker({
+        position: {lat: 35.7348266, lng: 139.4652701},
+        map: map
+      });
+      var marker2 = new google.maps.Marker({
+        position: {lat: 35.7217636, lng: 139.4667473},
+        icon:{
+            url: './house.png',
+            scaledSize : new google.maps.Size(33, 36)
+        },
+        map: map
+      });
+
+      // Step 3. Add info window
+
+      var contentString1 = '<div id="content"><h2 id="firstHeading" class="firstHeading">セブンイレブン 小平小川東町1丁目店</h2><p>私のバイト先。</p><p>選んだ理由は、通勤路、またその距離を改めて地図上で見てみようと思ったからです。</p></div>';
+      var contentString2 = '<div id="content"><h2 id="firstHeading" class="firstHeading">津田塾大学(家)</h2></div>';
+
+      var infowindow1 = new google.maps.InfoWindow({
+        content: contentString1
+      });
+      var infowindow2 = new google.maps.InfoWindow({
+        content: contentString2
+      });
+
+      marker1.addListener('click', function() {
+        infowindow1.open(map, marker1);
+      });
+      marker2.addListener('click', function() {
+        infowindow2.open(map, marker2);
+      });
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiV2ZbFIYuD3N4hzGLstSn2e4ZG5A7QlU&callback=initMap"
+    async defer></script>
+  </body>
+</html>
