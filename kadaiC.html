@@ -22,15 +22,11 @@
         center: {lat: 35.72898097702353, lng: 139.46534513594736},
         mapTypeId: google.maps.MapTypeId.TERRAIN,
         disableDefaultUI: true,
-        // Step 4. Customize displayed controls
         zoomControl: true,
         mapTypeControl: true,
         scaleControl: true
       }
       var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
-      // Step 2. Add custom icon
-
 
       var marker1 = new google.maps.Marker({
         position: {lat: 35.7348266, lng: 139.4652701},
@@ -44,9 +40,6 @@
         },
         map: map
       });
-
-      // Step 3. Add info window
-
       var contentString1 = '<div id="content"><h2 id="firstHeading" class="firstHeading">セブンイレブン 小平小川東町1丁目店</h2><p>私のバイト先。</p><p>選んだ理由は、通勤路、またその距離を改めて地図上で見てみようと思ったからです。</p></div>';
       var contentString2 = '<div id="content"><h2 id="firstHeading" class="firstHeading">津田塾大学(家)</h2></div>';
 
